@@ -8,8 +8,8 @@ import com.vaadin.spring.annotation.SpringUI
 import com.vaadin.spring.navigator.SpringViewProvider
 import com.vaadin.ui.*
 import ua.pp.ssenko.report.ui.view.LoginView
-
-
+import ua.pp.ssenko.report.utils.setLang
+import java.util.*
 
 
 @Theme("valo")
@@ -19,6 +19,9 @@ class MainView(
 ) : UI() {
 
     override fun init(request: VaadinRequest?) {
+
+        setLang("ru")
+
         navigator = Navigator(this, this)
         navigator.addProvider(viewProvider)
 
