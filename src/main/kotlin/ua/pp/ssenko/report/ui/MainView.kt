@@ -1,22 +1,27 @@
 package ua.pp.ssenko.report.ui
 
+import com.vaadin.annotations.Push
 import com.vaadin.annotations.Theme
 import com.vaadin.navigator.Navigator
 import com.vaadin.server.Page
 import com.vaadin.server.VaadinRequest
 import com.vaadin.spring.annotation.SpringUI
 import com.vaadin.spring.navigator.SpringViewProvider
-import com.vaadin.ui.*
-import ua.pp.ssenko.report.ui.view.LoginView
+import com.vaadin.ui.UI
 import ua.pp.ssenko.report.utils.setLang
-import java.util.*
+import java.util.concurrent.ConcurrentHashMap
 
 
 @Theme("valo")
 @SpringUI(path = "")
+@Push
 class MainView(
         private val viewProvider: SpringViewProvider
 ) : UI() {
+
+    companion object {
+        val uis = ConcurrentHashMap<String, UI>()
+    }
 
     override fun init(request: VaadinRequest?) {
 
@@ -39,7 +44,7 @@ class MainView(
         if (user == null) {
             navigator.navigateTo("login")
         } else {
-
+            navigator.navigateTo(route)
         }
     }
 

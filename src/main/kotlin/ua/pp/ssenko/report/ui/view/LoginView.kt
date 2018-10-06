@@ -4,32 +4,41 @@ import com.vaadin.navigator.View
 import com.vaadin.spring.annotation.SpringView
 import com.vaadin.ui.*
 import com.vaadin.ui.Alignment.MIDDLE_CENTER
+import com.vaadin.ui.Alignment.TOP_CENTER
+import com.vaadin.ui.themes.ValoTheme
 import fi.jasoft.qrcode.QRCode
-import ua.pp.ssenko.report.domain.AuthRequest
-import ua.pp.ssenko.report.repository.AuthRequestRepository
+import ua.pp.ssenko.report.ui.MainView
 import ua.pp.ssenko.report.utils.tr
 import java.util.*
 
 @SpringView(name = "login")
 class LoginView(
-        val authRequestRepository: AuthRequestRepository
 ): VerticalLayout(), View {
 
     override fun getViewComponent(): Component {
 
-        val id = UUID.randomUUID().toString()
+        val label = Label(tr.`Scan qr code for login`)
+        addComponent(label)
+        setComponentAlignment(label, TOP_CENTER)
+        setExpandRatio(label, 0f)
+        label.styleName = ValoTheme.LABEL_H2
+        label.setSizeUndefined()
 
-        authRequestRepository.save(AuthRequest(requestKey = id))
+        val id = UUID.randomUUID().toString()
 
         val qrCode = QRCode()
         qrCode.value = id
-        setComponentAlignment(qrCode, MIDDLE_CENTER)
         qrCode.setHeight("100%");
         qrCode.setWidth("100%");
+        qrCode.addDetachListener {
+            MainView.uis.remove(id)
+        }
 
+        MainView.uis[id] = UI.getCurrent()
 
-        addComponent(Label(tr.`Scan qr code for login`))
         addComponent(qrCode)
+        setComponentAlignment(qrCode, MIDDLE_CENTER)
+        setExpandRatio(qrCode, 1f)
 
         setSizeFull()
         return this
