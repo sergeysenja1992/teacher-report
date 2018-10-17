@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap
 @Theme("valo")
 @SpringUI(path = "")
 @Push
-class MainView(
+class MainUi(
         private val viewProvider: SpringViewProvider
 ) : UI() {
 

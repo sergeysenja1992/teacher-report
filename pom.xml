@@ -99,6 +99,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.vaadin.addon</groupId>
+            <artifactId>oauthpopup</artifactId>
+            <version>0.0.4</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -138,6 +144,9 @@
     </dependencyManagement>
 
     <build>
+
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -210,6 +219,7 @@
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
+
     </repositories>
 
 </project>
