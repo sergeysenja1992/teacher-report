@@ -5,4 +5,6 @@ import ua.pp.ssenko.report.domain.User
 
 interface UserRepository: CrudRepository<User, String> {
 
+    fun findByNumber(number: String): User?
+
 }
