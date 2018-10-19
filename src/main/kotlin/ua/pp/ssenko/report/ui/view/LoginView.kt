@@ -3,18 +3,14 @@ package ua.pp.ssenko.report.ui.view
 import com.google.api.client.auth.oauth2.AuthorizationCodeRequestUrl
 import com.vaadin.navigator.View
 import com.vaadin.spring.annotation.SpringView
+import com.vaadin.ui.Alignment
 import com.vaadin.ui.Button
 import com.vaadin.ui.Component
-import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
-import org.vaadin.oauth.OAuthButton
 import ua.pp.ssenko.report.config.OAuthProperties
-import ua.pp.ssenko.report.domain.Account
 import ua.pp.ssenko.report.ui.MainUi
+import ua.pp.ssenko.report.utils.tr
 import java.util.*
-import jdk.nashorn.internal.objects.NativeJava.extend
-import com.vaadin.server.BrowserWindowOpener
-import com.vaadin.server.ExternalResource
 
 
 @SpringView(name = "login")
@@ -24,7 +20,7 @@ class LoginView(
 
     override fun getViewComponent(): Component {
 
-        val signInButton = Button("Sign in from google")
+        val signInButton = Button(tr.`Sign in from google`)
         signInButton.addClickListener {
             val state = UUID.randomUUID().toString()
             MainUi.uis.put(state, ui)
@@ -35,7 +31,9 @@ class LoginView(
             ui.page.setLocation(authUrl)
         }
 
-        addComponent(signInButton);
+        addComponent(signInButton)
+
+        setComponentAlignment(signInButton, Alignment.MIDDLE_CENTER)
 
         setSizeFull()
         return this

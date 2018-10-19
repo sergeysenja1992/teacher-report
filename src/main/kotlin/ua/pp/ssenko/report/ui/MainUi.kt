@@ -9,6 +9,7 @@ import com.vaadin.spring.annotation.SpringUI
 import com.vaadin.spring.navigator.SpringViewProvider
 import com.vaadin.ui.UI
 import ua.pp.ssenko.report.domain.Account
+import ua.pp.ssenko.report.ui.view.MainView
 import ua.pp.ssenko.report.utils.setLang
 import java.util.concurrent.ConcurrentHashMap
 
@@ -31,7 +32,7 @@ class MainUi(
         navigator = Navigator(this, this)
         navigator.addProvider(viewProvider)
 
-        //navigator.setErrorView(LoginPage::class.java)
+        navigator.setErrorView(MainView::class.java)
 
         Page.getCurrent().addPopStateListener{
             event -> router(event.uri)

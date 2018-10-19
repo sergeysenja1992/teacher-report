@@ -1,7 +1,6 @@
 package ua.pp.ssenko.report.utils
 
 import kotlin.reflect.KProperty
-import kotlin.reflect.full.memberProperties
 
 class Tr(val currentLang: String) {
 
@@ -23,8 +22,8 @@ class Tr(val currentLang: String) {
         }
     }
 
-    val `Scan qr code for login`: String by tr (
-            ru = "Отсканируйте qr code чтобы войти."
+    val `Sign in from google`: String by tr (
+            ru = "Войти через Google"
     )
 
 }
