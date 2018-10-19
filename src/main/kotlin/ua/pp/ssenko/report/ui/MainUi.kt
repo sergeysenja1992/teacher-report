@@ -8,6 +8,7 @@ import com.vaadin.server.VaadinRequest
 import com.vaadin.spring.annotation.SpringUI
 import com.vaadin.spring.navigator.SpringViewProvider
 import com.vaadin.ui.UI
+import ua.pp.ssenko.report.domain.Account
 import ua.pp.ssenko.report.utils.setLang
 import java.util.concurrent.ConcurrentHashMap
 
@@ -36,11 +37,11 @@ class MainUi(
             event -> router(event.uri)
         }
 
-        router("");
+        router(navigator.state)
     }
 
     private fun router(route: String) {
-        val user = session.getAttribute("user")
+        val user = session.getAttribute(Account::class.java)
         if (user == null) {
             navigator.navigateTo("login")
         } else {

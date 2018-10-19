@@ -31,3 +31,12 @@ logging:
     console: '%d{"yyyy/MM/dd HH:mm:ss,SSS"} [%p] [%t] %M\(%F:%L\) - %msg%n'
     file: '%d{"yyyy/MM/dd HH:mm:ss,SSS"} [%p] [%t] %M\(%F:%L\) - %msg%n'
   file: /logs/application.log
+
+oauth2:
+  client-id: 310656374421-55dh05fi8tar0ig7j7soc3a6m0lfcf52.apps.googleusercontent.com
+  client-secret: AULgamMtdG532zY_pA0knuMU
+  user-authorization-uri: https://accounts.google.com/o/oauth2/auth
+  scopes: https://www.googleapis.com/auth/userinfo.email
+  redirect-uri: http://localhost:8080/oauth2callback
+  redirect-path: /oauth2callback
+  access-token-uri: https://accounts.google.com/o/oauth2/token

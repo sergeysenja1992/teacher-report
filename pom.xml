@@ -99,9 +99,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.vaadin.addon</groupId>
-            <artifactId>oauthpopup</artifactId>
-            <version>0.0.4</version>
+            <groupId>org.vaadin.addons</groupId>
+            <artifactId>oauth-buttons</artifactId>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>
@@ -109,6 +109,25 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.19.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-plus</artifactId>
+            <version>v1-rev402-1.22.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+            <version>2.9.4.1</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
