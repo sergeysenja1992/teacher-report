@@ -2,26 +2,26 @@ package ua.pp.ssenko.report.service
 
 import org.springframework.stereotype.Service
 import ua.pp.ssenko.report.domain.Account
+import ua.pp.ssenko.report.domain.AuthCode
 import ua.pp.ssenko.report.repository.AccountRepository
+import ua.pp.ssenko.report.repository.AuthCodeRepository
+import ua.pp.ssenko.report.utils.PHONE_PREFIX
 
 @Service
 class AccountService(
-        val accountRepository: AccountRepository
+        val accountRepository: AccountRepository,
+        val authCodeRepository: AuthCodeRepository
 ) {
 
     fun loginUser(email: String, state: String): Account {
-        val account = accountRepository.findByEmail(email)
-        if (!state.startsWith("PHONE_")) {
-            return account ?: accountRepository.save(Account(email = email))
+        var account = accountRepository.findByEmail(email)
+        account = account ?: accountRepository.save(Account(email = email))
+
+        if (state.startsWith(PHONE_PREFIX)) {
+            authCodeRepository.save(AuthCode(authCode = state, account = account))
         }
-        if (account == null) {
-            return accountRepository.save(Account(email = email, authCodes = mutableListOf(state)))
-        }
-        if (account.authCodes.contains(state)) {
-            return account
-        }
-        account.authCodes.add(state)
-        return accountRepository.save(account)
+
+        return account
     }
 
 }
