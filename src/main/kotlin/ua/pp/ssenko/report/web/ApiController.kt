@@ -10,7 +10,7 @@ import ua.pp.ssenko.report.ui.MainUi
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@RestController
+@RestController("/api")
 class ApiController(
         private val accountService: AccountService,
         private val googleService: GoogleService
@@ -22,13 +22,15 @@ class ApiController(
               response: HttpServletResponse)  {
 
         val email = googleService.getAuthEmail(request.requestURL.toString(), request.queryString)
-        val account = accountService.loginUser(email, state)
+        val account = accountService.loginUser(email)
 
         val ui = MainUi.uis.get(state)
         ui?.session?.setAttribute(Account::class.java, account)
         response.sendRedirect("/#!main")
 
     }
+
+    //@GetMapping("/acceptPhoneLogin")
 
 
 

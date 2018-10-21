@@ -13,15 +13,9 @@ class AccountService(
         val authCodeRepository: AuthCodeRepository
 ) {
 
-    fun loginUser(email: String, state: String): Account {
+    fun loginUser(email: String): Account {
         var account = accountRepository.findByEmail(email)
-        account = account ?: accountRepository.save(Account(email = email))
-
-        if (state.startsWith(PHONE_PREFIX)) {
-            authCodeRepository.save(AuthCode(authCode = state, account = account))
-        }
-
-        return account
+        return account ?: accountRepository.save(Account(email = email))
     }
 
 }

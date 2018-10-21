@@ -33,10 +33,10 @@ logging:
   file: /logs/application.log
 
 oauth2:
-  client-id: 310656374421-55dh05fi8tar0ig7j7soc3a6m0lfcf52.apps.googleusercontent.com
-  client-secret: AULgamMtdG532zY_pA0knuMU
+  client-id: 818317884453-804qunbaqtgop3v3d8b6nonlnq057vvr.apps.googleusercontent.com
+  client-secret: 6sbNK_t0A3g0_5ouFlpJJQm5
   user-authorization-uri: https://accounts.google.com/o/oauth2/auth
   scopes: https://www.googleapis.com/auth/userinfo.email
-  redirect-uri: http://localhost:8080/oauth2callback
-  redirect-path: /oauth2callback
+  redirect-uri: http://localhost:8080/api/oauth2callback
+  redirect-path: /api/oauth2callback
   access-token-uri: https://accounts.google.com/o/oauth2/token
